@@ -45,7 +45,9 @@ module Reel
     end
 
     def uri
-      @uri ||= URI(url)
+      url_path = url
+      url_path = url_path[1..-1] if url_path.index('//') == 0
+      @uri ||= URI(url_path)
     end
 
     def path
